@@ -6,6 +6,12 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e o 
 
 Cada categoria em `skills/` tem sua própria versão, declarada em `.claude-plugin/plugin.json`. A versão listada aqui no topo é a do marketplace (`.claude-plugin/marketplace.json`) como um todo. Como o repositório ainda não teve nenhuma versão publicada, todo o trabalho até aqui faz parte do primeiro lançamento (1.0.0) - a partir do próximo commit e push, mudanças estruturais passam a exigir um novo bump de versão.
 
+## [development 1.1.0] - 2026-10-10
+
+### Adicionado
+
+- Seção "Princípios de execução" nas skills `code-review` e `commit-message`, com diretrizes comportamentais para reduzir erros comuns de assistentes de IA (presunção de contexto, abstrações especulativas, mistura de bug com preferência de estilo, falta de critério verificável), adaptadas ao escopo de cada skill.
+
 ## [1.0.0] - 2026-10-10
 
 ### Adicionado

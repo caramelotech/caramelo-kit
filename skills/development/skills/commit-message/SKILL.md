@@ -7,6 +7,22 @@ description: Gera mensagens de commit claras e padronizadas seguindo a especific
 
 Gere uma mensagem de commit clara e padronizada seguindo a especificação [Conventional Commits](https://www.conventionalcommits.org).
 
+## Princípios de execução
+
+Para reduzir erros comuns de assistentes de IA ao gerar a mensagem, siga estes princípios. Para mudanças triviais, use bom senso.
+
+**Pense antes de escrever**
+Não presuma o motivo da mudança quando o diff não deixar claro o "porquê". Se houver mais de uma motivação plausível, pergunte ou declare a suposição no corpo da mensagem em vez de inventar uma justificativa.
+
+**Simplicidade em primeiro lugar**
+A mensagem descreve exatamente o que o diff muda - nada de escopo, motivação ou planos futuros que não estejam nele.
+
+**Fique no que o commit realmente muda**
+Não comente sobre código vizinho que não faz parte do diff, mesmo que pareça melhorável. Se perceber algo relacionado fora do escopo, isso é observação para outro commit, não parte desta mensagem.
+
+**Critério de qualidade verificável**
+Antes de entregar, confira: alguém que não viu o diff entenderia o "porquê" da mudança só lendo a mensagem? Se não, o corpo precisa de mais contexto; se a descrição já repete o diff literalmente, corte.
+
 ## Formato
 
 ```

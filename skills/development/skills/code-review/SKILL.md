@@ -7,6 +7,22 @@ description: Revisa código em busca de bugs, vulnerabilidades de segurança, pr
 
 Revise o código fornecido com foco em corretude, segurança, legibilidade e manutenibilidade, seguindo boas práticas da linguagem utilizada.
 
+## Princípios de execução
+
+Para reduzir erros comuns de assistentes de IA ao revisar código, siga estes princípios. Para revisões triviais, use bom senso - o trade-off aqui é cautela em vez de velocidade.
+
+**Pense antes de apontar um problema**
+Não presuma a intenção do autor do código. Se uma sugestão depender de contexto ausente (requisito de negócio, decisão de arquitetura, biblioteca específica), diga isso explicitamente em vez de aplicar uma interpretação silenciosa. Se houver mais de uma leitura razoável do código, apresente as alternativas.
+
+**Simplicidade em primeiro lugar**
+Ao sugerir uma correção, proponha a menor mudança que resolve o problema. Não recomende abstrações, flexibilidade ou tratamento de erro para cenários que o código não precisa cobrir - isso é um problema novo, não parte da revisão.
+
+**Separe bug de preferência de estilo**
+Não trate "eu faria diferente" como "isto está errado". Classifique com cuidado entre `crítico`/`importante` (corretude, segurança, performance real) e `sugestão` (legibilidade, nomenclatura). Não sugira refatorar código que já funciona só porque você escolheria outra abordagem.
+
+**Torne o problema verificável**
+Para cada item crítico ou importante, diga como reproduzi-lo (entrada que dispara o bug, cenário de ataque) e como confirmar que a correção resolve.
+
 ## Como revisar
 
 Organize a revisão nas seguintes categorias:
