@@ -16,6 +16,8 @@ O repositório tem quatro áreas principais: `skills/` (skills agrupadas por cat
 | [`devops`](skills/devops)           | Infraestrutura e containerização                    |
 | [`security`](skills/security)       | Análise de segurança e detecção de vulnerabilidades |
 | [`design`](skills/design)           | Aplicação de design systems em apresentações e sites |
+| [`study`](skills/study)             | Estudos e produtividade: notas de aula para revisão |
+| [`career`](skills/career)           | Carreira: cartas, textos de candidatura e entrevistas |
 
 ## Como instalar
 
@@ -52,6 +54,8 @@ O repositório tem quatro áreas principais: `skills/` (skills agrupadas por cat
    /plugin install devops@caramelo-kit
    /plugin install security@caramelo-kit
    /plugin install design@caramelo-kit
+   /plugin install study@caramelo-kit
+   /plugin install career@caramelo-kit
    ```
 
    As skills de uma categoria ficam disponíveis com o prefixo dela, por exemplo `/development:code-review`.

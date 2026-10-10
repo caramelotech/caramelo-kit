@@ -4,8 +4,8 @@
     "name": "Caramelo Tech",
     "url": "https://github.com/caramelotech/caramelo-kit"
   },
-  "description": "Skills reutilizáveis para desenvolvimento de software, organizadas por categoria: desenvolvimento, escrita, testes, devops e segurança",
-  "version": "1.0.0",
+  "description": "Skills reutilizáveis para desenvolvimento de software, organizadas por categoria: desenvolvimento, escrita, testes, devops, segurança, design, estudos e carreira",
+  "version": "1.1.0",
   "plugins": [
     {
       "name": "development",
@@ -48,6 +48,20 @@
       "description": "Design system application for presentations and sites",
       "category": "design",
       "tags": ["design-system", "presentation", "branding"]
+    },
+    {
+      "name": "study",
+      "source": "./skills/study",
+      "description": "Study and productivity skills: lecture notes for review",
+      "category": "productivity",
+      "tags": ["study", "lecture-notes", "productivity"]
+    },
+    {
+      "name": "career",
+      "source": "./skills/career",
+      "description": "Career skills: cover letters, application texts and interview prep",
+      "category": "productivity",
+      "tags": ["career", "cover-letter", "job-application", "interview"]
     }
   ]
 }

@@ -8,7 +8,7 @@ Coleção de **skills**, **agents** e **plugins** reutilizáveis para desenvolvi
 
 ## Estrutura
 
-- `skills/` - Skills agrupadas por categoria (`development`, `writing`, `testing`, `devops`, `security`, `design`). Cada categoria é um plugin independente do Claude Code: `skills/<categoria>/.claude-plugin/plugin.json` (manifesto com nome, versão, descrição, autor) + `skills/<categoria>/skills/<nome>/SKILL.md` (a subpasta `skills/` dentro da categoria é a convenção de escaneamento padrão do Claude Code).
+- `skills/` - Skills agrupadas por categoria (`development`, `writing`, `testing`, `devops`, `security`, `design`, `study`, `career`). Cada categoria é um plugin independente do Claude Code: `skills/<categoria>/.claude-plugin/plugin.json` (manifesto com nome, versão, descrição, autor) + `skills/<categoria>/skills/<nome>/SKILL.md` (a subpasta `skills/` dentro da categoria é a convenção de escaneamento padrão do Claude Code).
 - `agents/` - Orquestradores que combinam múltiplas skills. Cada agente tem seu próprio `README.md` descrevendo fluxo de execução, inputs e outputs.
 - `plugins/` - Integrações com ferramentas externas (`vscode/`, `mcp/`), não confundir com os plugins do Claude Code em `skills/`. Cada integração tem seu próprio `README.md` com instruções de instalação.
 - `templates/` - Templates base para criar novos itens (`skill.md`, `agent.md`, `plugin.md`).
