@@ -1,4 +1,4 @@
-# caramelo-kit
+# Caramelo Kit 🐶
 
 Repositório de skills, agents e plugins para desenvolvimento de software. As skills são organizadas em **categorias** e distribuídas como plugins instaláveis via marketplace do Claude Code.
 
@@ -8,15 +8,15 @@ O repositório tem quatro áreas principais: `skills/` (skills agrupadas por cat
 
 ## Categorias disponíveis
 
-| Categoria                           | Descrição                                           |
-| ----------------------------------- | --------------------------------------------------- |
-| [`development`](skills/development) | Qualidade, revisão de código e mensagens de commit  |
-| [`testing`](skills/testing)         | Geração de testes                                   |
-| [`writing`](skills/writing)         | Criação de textos, humanização e documentação       |
-| [`devops`](skills/devops)           | Infraestrutura e containerização                    |
-| [`security`](skills/security)       | Análise de segurança e detecção de vulnerabilidades |
-| [`design`](skills/design)           | Aplicação de design systems em apresentações e sites |
-| [`study`](skills/study)             | Estudos e produtividade: notas de aula para revisão |
+| Categoria                           | Descrição                                             |
+| ----------------------------------- | ----------------------------------------------------- |
+| [`development`](skills/development) | Qualidade, revisão de código e mensagens de commit    |
+| [`testing`](skills/testing)         | Geração de testes                                     |
+| [`writing`](skills/writing)         | Criação de textos, humanização e documentação         |
+| [`devops`](skills/devops)           | Infraestrutura e containerização                      |
+| [`security`](skills/security)       | Análise de segurança e detecção de vulnerabilidades   |
+| [`design`](skills/design)           | Aplicação de design systems em apresentações e sites  |
+| [`study`](skills/study)             | Estudos e produtividade: notas de aula para revisão   |
 | [`career`](skills/career)           | Carreira: cartas, textos de candidatura e entrevistas |
 
 ## Como instalar
