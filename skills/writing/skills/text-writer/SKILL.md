@@ -1,11 +1,11 @@
 ---
 name: text-writer
 description: |
-  Creates texts adapted to specific platforms and tones: LinkedIn posts, Instagram
-  stories/carousels, technical blogs, threads, newsletters, opinion articles, and more.
-  Accepts parameters for purpose, tone, audience, length, and keywords. Automatically
-  applies the text-humanizer skill at the end to produce natural, human-sounding output
-  free of AI writing patterns.
+  Cria textos adaptados a plataformas e tons específicos: posts para LinkedIn,
+  stories/carrosséis para Instagram, blogs técnicos, threads, newsletters, artigos
+  de opinião e outros. Aceita parâmetros de objetivo, tom, público, tamanho e
+  palavras-chave. Aplica automaticamente a skill text-humanizer ao final para
+  produzir um resultado natural, com som humano e livre de padrões de escrita de IA.
 allowed-tools:
   - Read
   - Write

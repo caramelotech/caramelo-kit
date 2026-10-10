@@ -1,6 +1,6 @@
 ---
 name: dockerfile-review
-description: Reviews a Dockerfile for security issues, image size optimizations, and best practices. Use when asked to review, audit, or improve a Dockerfile.
+description: Revisa um Dockerfile em busca de problemas de segurança, otimizações de tamanho de imagem e boas práticas. Use quando for solicitado revisar, auditar ou melhorar um Dockerfile.
 ---
 
 # Dockerfile Review

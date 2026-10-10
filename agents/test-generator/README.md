@@ -1,7 +1,7 @@
 # Agent: Test Generator
 
 **Tipo:** autônomo  
-**Skills utilizadas:** `testing/unit-test-generator.md`
+**Skills utilizadas:** `skills/testing/skills/unit-test-generator/SKILL.md`
 
 ## Objetivo
 
@@ -12,7 +12,7 @@ Analisa um módulo ou arquivo completo e gera uma suite de testes cobrindo todas
 ```
 1. Recebe o arquivo ou módulo a testar
 2. Identifica todas as funções e classes públicas
-3. Para cada função/classe, executa unit-test-generator.md
+3. Para cada função/classe, executa a skill unit-test-generator
 4. Combina os testes em um único arquivo coeso
 5. Verifica se há dependências externas que precisam de mock
 ```

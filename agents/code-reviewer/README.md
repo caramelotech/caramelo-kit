@@ -1,7 +1,7 @@
 # Agent: Code Reviewer
 
 **Tipo:** assistido  
-**Skills utilizadas:** `development/code-review.md`, `security/owasp-check.md`
+**Skills utilizadas:** `skills/development/skills/code-review/SKILL.md`, `skills/security/skills/owasp-check/SKILL.md`
 
 ## Objetivo
 
@@ -11,8 +11,8 @@ Orquestra uma revisão completa de código combinando análise geral e verifica�
 
 ```
 1. Recebe o diff ou arquivos do PR
-2. Executa code-review.md no código alterado
-3. Executa owasp-check.md nos trechos críticos identificados
+2. Executa a skill code-review no código alterado
+3. Executa a skill owasp-check nos trechos críticos identificados
 4. Consolida os resultados em um relatório único
 5. Gera lista de action items por prioridade
 ```

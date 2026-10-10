@@ -1,7 +1,7 @@
 # Agent: Doc Writer
 
 **Tipo:** assistido  
-**Skills utilizadas:** `writing/commit-message.md`
+**Skills utilizadas:** `skills/development/skills/commit-message/SKILL.md`
 
 ## Objetivo
 
@@ -23,7 +23,7 @@ Informe o código, o tipo de documento desejado e o público-alvo. O agente reto
 ## Inputs
 
 | Parâmetro       | Obrigatório | Descrição                                        |
-| --------------- | ----------- | ------------------------------------------------ |
+| --------------- | ----------- | ------------------------------------------------- |
 | `codigo`        | Sim         | Código-fonte a documentar                        |
 | `tipo`          | Sim         | `readme`, `docstring`, `changelog`, `guia`       |
 | `publico`       | Sim         | `desenvolvedor`, `usuário final`, `contribuidor` |

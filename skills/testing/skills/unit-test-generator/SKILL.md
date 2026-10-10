@@ -1,6 +1,6 @@
 ---
 name: unit-test-generator
-description: Generates unit tests for a function or class covering happy path, edge cases, and error scenarios. Use when asked to write, create, or generate tests.
+description: Gera testes unitários para uma função ou classe, cobrindo caminho feliz, casos de borda e cenários de erro. Use quando for solicitado escrever, criar ou gerar testes.
 ---
 
 # Unit Test Generator

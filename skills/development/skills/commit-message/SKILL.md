@@ -1,6 +1,6 @@
 ---
 name: commit-message
-description: Generates clear, standardized commit messages following the Conventional Commits specification. Use when asked to write or suggest a commit message.
+description: Gera mensagens de commit claras e padronizadas seguindo a especificação Conventional Commits. Use quando for solicitado escrever ou sugerir uma mensagem de commit.
 ---
 
 # Commit Message Writer

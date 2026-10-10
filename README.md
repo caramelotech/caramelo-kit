@@ -1,57 +1,74 @@
-# devkit
+# caramelo-kit
 
-Repositório de skills, agents e plugins para desenvolvimento de software. As skills seguem a estrutura do repositório [anthropics/skills](https://github.com/anthropics/skills) e podem ser instaladas como plugins no Claude Code.
+Repositório de skills, agents e plugins para desenvolvimento de software. As skills são organizadas em **categorias** e distribuídas como plugins instaláveis via marketplace do Claude Code.
 
 ## Estrutura
 
-```
-devkit/
-├── skills/                  # Uma pasta por skill, cada uma com SKILL.md
-│   ├── code-review/
-│   ├── unit-test-generator/
-│   ├── commit-message/
-│   ├── dockerfile-review/
-│   └── owasp-check/
-├── agents/                  # Agentes que orquestram múltiplas skills
-│   ├── code-reviewer/
-│   ├── test-generator/
-│   └── doc-writer/
-├── plugins/                 # Integrações com ferramentas externas
-│   ├── vscode/
-│   └── mcp/
-├── templates/               # Templates para criar novos itens
-└── .claude-plugin/
-    └── marketplace.json     # Registro para uso como plugin no Claude Code
-```
+O repositório tem quatro áreas principais: `skills/` (skills agrupadas por categoria, cada categoria um plugin independente do Claude Code), `agents/` (orquestradores que combinam múltiplas skills), `plugins/` (integrações com ferramentas externas, não confundir com os plugins do Claude Code) e `templates/` (ponto de partida para cada um desses itens). O registro do marketplace fica em `.claude-plugin/marketplace.json` e o histórico de versões em `CHANGELOG.md`. Detalhes de como criar cada item estão no [guia de contribuição](.github/CONTRIBUTING.md).
 
-## Skills disponíveis
+## Categorias disponíveis
 
-| Skill | Categoria | Descrição |
-| ----- | --------- | --------- |
-| [`code-review`](skills/code-review/SKILL.md) | development | Revisão de código com foco em bugs, segurança, performance e legibilidade |
-| [`unit-test-generator`](skills/unit-test-generator/SKILL.md) | testing | Geração de testes unitários cobrindo caminho feliz, borda e erros |
-| [`commit-message`](skills/commit-message/SKILL.md) | writing | Mensagens de commit seguindo Conventional Commits |
-| [`dockerfile-review`](skills/dockerfile-review/SKILL.md) | devops | Revisão de Dockerfiles com foco em segurança e boas práticas |
-| [`owasp-check`](skills/owasp-check/SKILL.md) | security | Análise de vulnerabilidades baseada no OWASP Top 10 |
+| Categoria                           | Descrição                                           |
+| ----------------------------------- | --------------------------------------------------- |
+| [`development`](skills/development) | Qualidade, revisão de código e mensagens de commit  |
+| [`testing`](skills/testing)         | Geração de testes                                   |
+| [`writing`](skills/writing)         | Criação de textos, humanização e documentação       |
+| [`devops`](skills/devops)           | Infraestrutura e containerização                    |
+| [`security`](skills/security)       | Análise de segurança e detecção de vulnerabilidades |
+| [`design`](skills/design)           | Aplicação de design systems em apresentações e sites |
 
-## Como usar
+## Como instalar
 
-### Como plugin no Claude Code
+### Via marketplace do Claude Code (recomendado)
 
-Registre o repositório como plugin para ter acesso às skills diretamente no Claude Code:
+1. Registre este repositório como marketplace. De dentro de uma sessão do Claude Code:
 
-```bash
-# Instalar todas as skills como plugin
-claude mcp add devkit /caminho/para/devkit
-```
+   ```
+   /plugin marketplace add caramelotech/caramelo-kit
+   ```
+
+   Ou direto do terminal, com a CLI:
+
+   ```bash
+   claude plugin marketplace add caramelotech/caramelo-kit
+   ```
+
+   Outras formas de apontar para o mesmo repositório, com qualquer um dos dois comandos acima:
+
+   ```
+   # via SSH
+   git@github.com:caramelotech/caramelo-kit.git
+
+   # caminho local
+   /caminho/para/caramelo-kit
+   ```
+
+2. Instale a categoria que você precisa:
+
+   ```
+   /plugin install development@caramelo-kit
+   /plugin install writing@caramelo-kit
+   /plugin install testing@caramelo-kit
+   /plugin install devops@caramelo-kit
+   /plugin install security@caramelo-kit
+   /plugin install design@caramelo-kit
+   ```
+
+   As skills de uma categoria ficam disponíveis com o prefixo dela, por exemplo `/development:code-review`.
+
+3. Para validar antes de publicar alterações:
+
+   ```bash
+   claude plugin validate .
+   claude plugin validate ./skills/<categoria>
+   ```
 
 ### Como contexto manual
 
 Copie o conteúdo de um `SKILL.md` e use como contexto em qualquer LLM:
 
 ```bash
-# Exibir uma skill
-cat skills/code-review/SKILL.md
+cat skills/<categoria>/skills/<nome-da-skill>/SKILL.md
 ```
 
 ### Agents
@@ -62,11 +79,15 @@ Os agents combinam múltiplas skills para tarefas complexas. Cada um tem seu pr�
 - [`test-generator`](agents/test-generator/README.md) - Geração de suite de testes para um módulo
 - [`doc-writer`](agents/doc-writer/README.md) - Geração de documentação técnica
 
-## Como contribuir
+## Versionamento
 
-1. Use os templates em `templates/` como ponto de partida
-2. Toda nova skill vai em `skills/<nome>/SKILL.md`
-3. O frontmatter do `SKILL.md` deve ter `name` e `description` em inglês
-4. O corpo pode ser em pt-BR; exemplos de código devem estar em inglês
-5. Registre a nova skill em `.claude-plugin/marketplace.json`
-6. Siga `kebab-case` para nomes de arquivos e diretórios
+O repositório segue [Versionamento Semântico](https://semver.org/lang/pt-BR/) em dois níveis:
+
+- **Marketplace** (`.claude-plugin/marketplace.json`, campo `version`): versão geral do catálogo de categorias.
+- **Categoria** (`skills/<categoria>/.claude-plugin/plugin.json`, campo `version`): versão própria de cada categoria, incrementada apenas quando ela muda.
+
+Todas as mudanças notáveis são documentadas em [`CHANGELOG.md`](CHANGELOG.md), seguindo [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
+
+## Contribuindo
+
+Quer adicionar uma skill, um agent ou uma categoria nova? Veja o guia em [CONTRIBUTING.md](.github/CONTRIBUTING.md).

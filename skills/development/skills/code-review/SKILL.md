@@ -1,6 +1,6 @@
 ---
 name: code-review
-description: Reviews code for bugs, security vulnerabilities, performance issues, and maintainability. Use when asked to review, analyze, or give feedback on code.
+description: Revisa código em busca de bugs, vulnerabilidades de segurança, problemas de performance e manutenibilidade. Use quando for solicitado revisar, analisar ou dar feedback sobre código.
 ---
 
 # Code Review

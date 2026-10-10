@@ -1,56 +1,53 @@
 {
-  "name": "devkit",
-  "metadata": {
-    "description": "Reusable skills for software development: code review, testing, commit messages, Docker, and security",
-    "version": "1.0.0"
+  "name": "caramelo-kit",
+  "owner": {
+    "name": "Caramelo Tech",
+    "url": "https://github.com/caramelotech/caramelo-kit"
   },
+  "description": "Skills reutilizáveis para desenvolvimento de software, organizadas por categoria: desenvolvimento, escrita, testes, devops e segurança",
+  "version": "1.0.0",
   "plugins": [
     {
       "name": "development",
-      "description": "Code quality and review skills",
-      "source": "./",
-      "strict": false,
-      "skills": [
-        "./skills/code-review"
-      ]
-    },
-    {
-      "name": "testing",
-      "description": "Test generation skills",
-      "source": "./",
-      "strict": false,
-      "skills": [
-        "./skills/unit-test-generator"
-      ]
+      "source": "./skills/development",
+      "description": "Code quality, review and commit message skills",
+      "category": "developer",
+      "tags": ["code-review", "quality", "commit-message"]
     },
     {
       "name": "writing",
-      "description": "Text creation, humanization, documentation and commit message skills",
-      "source": "./",
-      "strict": false,
-      "skills": [
-        "./skills/commit-message",
-        "./skills/text-writer",
-        "./skills/text-humanizer"
-      ]
+      "source": "./skills/writing",
+      "description": "Text creation, humanization and documentation skills",
+      "category": "writing",
+      "tags": ["content", "copywriting"]
+    },
+    {
+      "name": "testing",
+      "source": "./skills/testing",
+      "description": "Test generation skills",
+      "category": "developer",
+      "tags": ["testing", "unit-tests"]
     },
     {
       "name": "devops",
+      "source": "./skills/devops",
       "description": "Infrastructure and containerization skills",
-      "source": "./",
-      "strict": false,
-      "skills": [
-        "./skills/dockerfile-review"
-      ]
+      "category": "devops",
+      "tags": ["docker", "infrastructure"]
     },
     {
       "name": "security",
+      "source": "./skills/security",
       "description": "Security analysis and vulnerability detection skills",
-      "source": "./",
-      "strict": false,
-      "skills": [
-        "./skills/owasp-check"
-      ]
+      "category": "security",
+      "tags": ["owasp", "vulnerabilities"]
+    },
+    {
+      "name": "design",
+      "source": "./skills/design",
+      "description": "Design system application for presentations and sites",
+      "category": "design",
+      "tags": ["design-system", "presentation", "branding"]
     }
   ]
 }

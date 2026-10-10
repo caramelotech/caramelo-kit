@@ -1,12 +1,13 @@
 ---
 name: text-humanizer
 description: |
-  Removes AI writing patterns from Brazilian Portuguese texts to make them sound
-  natural and human. Detects and fixes: excessive em-dash, "not X but Y" antithesis,
-  ethereal vocabulary (jornada, essência), inflated adjectives (crucial, robusto),
-  chained connectors, "É importante ressaltar", decorative gerunds, nominalization,
-  vague attributions, generic closings, and chatbot artifacts. Calibrated specifically
-  for PT-BR patterns — not a translation of English guides.
+  Remove padrões de escrita de IA de textos em português brasileiro para que soem
+  naturais e humanos. Detecta e corrige: travessão em excesso, antítese do tipo
+  "não X, mas Y", vocabulário etéreo (jornada, essência), adjetivos inflados
+  (crucial, robusto), conectores em cadeia, "É importante ressaltar", gerúndios
+  decorativos, nominalização, atribuições vagas, fechamentos genéricos e artefatos
+  de chatbot. Calibrado especificamente para padrões do PT-BR - não é tradução de
+  guias em inglês.
 allowed-tools:
   - Read
   - Write

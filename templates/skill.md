@@ -1,6 +1,6 @@
 ---
 name: nome-da-skill
-description: One-sentence description in English of what the skill does and when it should trigger.
+description: Descrição em uma frase, em português, do que a skill faz e quando ela deve disparar.
 ---
 
 # [Nome da Skill]

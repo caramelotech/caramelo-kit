@@ -1,6 +1,6 @@
 ---
 name: owasp-check
-description: Analyzes code for OWASP Top 10 security vulnerabilities with severity ratings and remediation examples. Use when asked to perform a security review, find vulnerabilities, or audit code for security issues.
+description: Analisa código em busca de vulnerabilidades de segurança do OWASP Top 10, com classificação de severidade e exemplos de correção. Use quando for solicitada uma revisão de segurança, identificação de vulnerabilidades ou auditoria de segurança do código.
 ---
 
 # OWASP Security Check
