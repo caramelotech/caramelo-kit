@@ -1,6 +1,6 @@
 # Perfil de carreira
 
-Procedimento compartilhado pelas skills da categoria `career` (`cover-letter`, `interview-prep`, `application-text`). Cada skill aponta para este arquivo e segue as instruções abaixo antes de começar a tarefa.
+Procedimento compartilhado pelas skills da categoria `career` (`cover-letter`, `interview-prep`, `application-text`, `linkedin-review`). Cada skill aponta para este arquivo e segue as instruções abaixo antes de começar a tarefa.
 
 ## Arquivo de perfil
 
@@ -32,12 +32,14 @@ O perfil é a memória das skills de carreira entre sessões. É um arquivo glob
 | `language`          | Idioma padrão dos textos (`pt-BR`, `en` ou `vaga`, para seguir o idioma da descrição)                         | Todas          |
 | `noteStyle`         | `md` (Markdown simples) ou `obsidian` (frontmatter e wikilinks no padrão do vault). Detectado, não perguntado | Todas          |
 | `coverLetterFormat` | `note`, `docx`, `pdf` ou `chat`                                                                               | `cover-letter` |
+| `linkedin`          | URL do perfil, caminho da última cópia do conteúdo (PDF ou texto) e data da cópia                             | `linkedin-review` |
+| `careerGoal`        | Objetivo de carreira: setor, cargo-alvo e empresas-alvo                                                       | `linkedin-review` |
 
 ## Ao iniciar qualquer skill da categoria
 
 1. Leia `~/.claude/career/profile.json`.
 2. Se o arquivo existir e tiver os campos que a skill usa, **não faça nenhuma pergunta de configuração**. Confirme apenas que `careerSource` e `outputFolder` ainda existem; se algum sumiu, pergunte só por ele e atualize o perfil.
-3. Se o arquivo não existir, faltar algum campo usado pela skill ou vier `--reconfigurar`, faça a configuração inicial abaixo, **perguntando só o que falta**. Uma pessoa que já usou outra skill da categoria não responde de novo o que já está salvo.
+3. Se o arquivo não existir, faltar algum campo usado pela skill ou vier `--reconfigurar`, faça a configuração inicial abaixo, **perguntando só o que falta**. Campos que a skill declara como opcionais (por exemplo, `careerSource` na `linkedin-review`) não bloqueiam a execução: a skill segue sem eles e sugere completá-los na resposta final. Uma pessoa que já usou outra skill da categoria não responde de novo o que já está salvo.
 4. Flags da chamada (`--trajetoria`, `--output`, `--idioma`, `--formato`) valem só para aquela chamada e não alteram o perfil, a menos que a pessoa peça.
 
 ## Configuração inicial
