@@ -10,11 +10,9 @@ O repositório tem quatro áreas principais: `skills/` (skills agrupadas por cat
 
 | Categoria                           | Descrição                                             |
 | ----------------------------------- | ----------------------------------------------------- |
-| [`development`](skills/development) | Qualidade, revisão de código e mensagens de commit    |
-| [`testing`](skills/testing)         | Geração de testes                                     |
+| [`development`](skills/development) | Qualidade, revisão, segurança, testes, commits e MVPs |
 | [`writing`](skills/writing)         | Criação de textos, humanização e documentação         |
 | [`devops`](skills/devops)           | Infraestrutura e containerização                      |
-| [`security`](skills/security)       | Análise de segurança e detecção de vulnerabilidades   |
 | [`design`](skills/design)           | Aplicação de design systems em apresentações e sites  |
 | [`study`](skills/study)             | Estudos e produtividade: notas de aula para revisão   |
 | [`career`](skills/career)           | Carreira: cartas, textos de candidatura e entrevistas |
@@ -50,9 +48,7 @@ O repositório tem quatro áreas principais: `skills/` (skills agrupadas por cat
    ```
    /plugin install development@caramelo-kit
    /plugin install writing@caramelo-kit
-   /plugin install testing@caramelo-kit
    /plugin install devops@caramelo-kit
-   /plugin install security@caramelo-kit
    /plugin install design@caramelo-kit
    /plugin install study@caramelo-kit
    /plugin install career@caramelo-kit
@@ -82,6 +78,18 @@ Os agents combinam múltiplas skills para tarefas complexas. Cada um tem seu pr�
 - [`code-reviewer`](agents/code-reviewer/README.md) - Revisão completa: qualidade + segurança
 - [`test-generator`](agents/test-generator/README.md) - Geração de suite de testes para um módulo
 - [`doc-writer`](agents/doc-writer/README.md) - Geração de documentação técnica
+
+## Preferências
+
+Algumas categorias lembram as preferências de cada pessoa entre sessões, para não perguntar tudo de novo a cada uso. As preferências ficam em arquivos na pasta do usuário, nunca neste repositório:
+
+| Categoria     | Arquivo                                  | O que guarda                                                                                         |
+| ------------- | ---------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `development` | `~/.claude/development/preferences.json` | Modo de autonomia, comportamento de cada skill (commits, push, correções, testes) e ajustes por repositório |
+| `career`      | `~/.claude/career/profile.json`          | Trajetória profissional, pasta de destino, idioma, formatos e objetivo de carreira                   |
+| `study`       | `~/.claude/lecture-notes/courses.json`   | Cursos e pastas onde ficam as notas de cada um                                                       |
+
+Para mudar uma preferência, use `--reconfigurar` na skill, `--preferencias` para ver as atuais (em `development`) ou peça em linguagem natural.
 
 ## Versionamento
 

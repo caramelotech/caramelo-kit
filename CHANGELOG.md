@@ -6,6 +6,37 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e o 
 
 Cada categoria em `skills/` tem sua própria versão, declarada em `.claude-plugin/plugin.json`. A versão listada aqui no topo é a do marketplace (`.claude-plugin/marketplace.json`) como um todo. Como o repositório ainda não teve nenhuma versão publicada, todo o trabalho até aqui faz parte do primeiro lançamento (1.0.0) - a partir do próximo commit e push, mudanças estruturais passam a exigir um novo bump de versão.
 
+## [2.0.0] - 2026-10-10
+
+### Adicionado
+
+- Preferências persistentes na categoria `development` (`~/.claude/development/preferences.json`, procedimento em `skills/development/shared/preferences.md`), com modo de autonomia global (`assistido` ou `autonomo`), preferências por skill e por repositório, e reconfiguração por `--reconfigurar`, `--preferencias` ou pedido em linguagem natural. No modo `autonomo`, as skills executam sem esperar resposta e relatam ao final, sempre parando antes de ações irreversíveis.
+  - `commit-message`: política para branches protegidas (perguntar, commitar direto ou criar branch nova), confirmação do plano, push (`never`, `ask` ou `auto`), `Signed-off-by` padrão e idioma das mensagens. Novas flags `--no-sign`, `--push` e `--no-push`.
+  - `code-review` e `owasp-check`: saída no chat ou em arquivo, severidade mínima e correções (sugerir, perguntar ou aplicar). A `code-review` pode incluir a `owasp-check` sempre.
+  - `unit-test-generator`: escrever os testes no repositório ou só no chat, rodar os testes, padrão de nomes, e framework e pasta de testes detectados e lembrados por repositório.
+  - `technical-cofounder`: preferências movidas para o arquivo comum da categoria e nível de check-ins (`stage`, `phase` ou `minimal`).
+
+### Alterado
+
+- Skills `unit-test-generator` e `owasp-check` movidas para a categoria `development` (1.3.0), em `skills/development/skills/`. Passam a ser chamadas como `development:unit-test-generator` e `development:owasp-check`.
+- Agents `code-reviewer` e `test-generator`, `AGENTS.md`, `README.md` e `CONTRIBUTING.md` atualizados para os novos caminhos.
+
+### Removido
+
+- Categorias `testing` e `security`, e os respectivos registros no marketplace. Quem instalou `testing@caramelo-kit` ou `security@caramelo-kit` deve desinstalá-las e instalar (ou atualizar) `development@caramelo-kit`.
+
+## [career 1.1.0] - 2026-10-10
+
+### Adicionado
+
+- Skill `linkedin-review`: avalia o perfil do LinkedIn contra um objetivo de carreira e gera um relatório com sugestões e racional por seção (título, Sobre, Experiência, palavras-chave, teste do recrutador, Destaques e DMs). Guarda o link do perfil, a cópia do conteúdo e o objetivo de carreira (setor, cargo-alvo e empresas-alvo) no perfil compartilhado, usa a trajetória profissional para completar métricas sem inventar e compara cada rodada com a avaliação anterior.
+
+## [development 1.2.0] - 2026-10-10
+
+### Adicionado
+
+- Skill `technical-cofounder`: conduz a pessoa da ideia até um produto funcional em 5 fases com portões de aprovação. Guarda nas preferências de desenvolvimento (`~/.claude/development/preferences.json`) o nível técnico (que calibra a linguagem da conversa), a pasta de projetos, a stack e a hospedagem preferidas e o registro de projetos em andamento, para retomar um projeto de onde parou.
+
 ## [1.1.0] - 2026-10-10
 
 ### Adicionado
