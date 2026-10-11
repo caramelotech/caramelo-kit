@@ -4,15 +4,15 @@
     "name": "Caramelo Tech",
     "url": "https://github.com/caramelotech/caramelo-kit"
   },
-  "description": "Skills reutilizáveis para desenvolvimento de software, organizadas por categoria: desenvolvimento, escrita, testes, devops, segurança, design, estudos e carreira",
-  "version": "1.1.0",
+  "description": "Skills reutilizáveis para desenvolvimento de software, organizadas por categoria: desenvolvimento, escrita, devops, design, estudos e carreira",
+  "version": "2.0.0",
   "plugins": [
     {
       "name": "development",
       "source": "./skills/development",
-      "description": "Code quality, review and commit message skills",
+      "description": "Code quality, review, security, testing, commit message and product building skills",
       "category": "developer",
-      "tags": ["code-review", "quality", "commit-message"]
+      "tags": ["code-review", "quality", "commit-message", "testing", "unit-tests", "owasp", "security"]
     },
     {
       "name": "writing",
@@ -22,25 +22,11 @@
       "tags": ["content", "copywriting"]
     },
     {
-      "name": "testing",
-      "source": "./skills/testing",
-      "description": "Test generation skills",
-      "category": "developer",
-      "tags": ["testing", "unit-tests"]
-    },
-    {
       "name": "devops",
       "source": "./skills/devops",
       "description": "Infrastructure and containerization skills",
       "category": "devops",
       "tags": ["docker", "infrastructure"]
-    },
-    {
-      "name": "security",
-      "source": "./skills/security",
-      "description": "Security analysis and vulnerability detection skills",
-      "category": "security",
-      "tags": ["owasp", "vulnerabilities"]
     },
     {
       "name": "design",
@@ -59,9 +45,9 @@
     {
       "name": "career",
       "source": "./skills/career",
-      "description": "Career skills: cover letters, application texts and interview prep",
+      "description": "Career skills: cover letters, application texts, interview prep and LinkedIn review",
       "category": "productivity",
-      "tags": ["career", "cover-letter", "job-application", "interview"]
+      "tags": ["career", "cover-letter", "job-application", "interview", "linkedin"]
     }
   ]
 }

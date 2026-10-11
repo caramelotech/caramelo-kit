@@ -1,22 +1,51 @@
 ---
 name: unit-test-generator
-description: Gera testes unitários para uma função ou classe, cobrindo caminho feliz, casos de borda e cenários de erro. Use quando for solicitado escrever, criar ou gerar testes.
+description: Gera testes unitários para uma função ou classe, cobrindo caminho feliz, casos de borda e cenários de erro. Lembra as preferências da pessoa entre sessões (escrever os arquivos de teste ou só mostrar no chat, rodar os testes, padrão de nomes) e o framework e a pasta de testes de cada repositório, para trabalhar de forma autônoma quando ela quiser. Use quando for solicitado escrever, criar ou gerar testes.
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash, AskUserQuestion
 ---
 
 # Unit Test Generator
 
 Gere uma suite completa de testes unitários para o código fornecido, cobrindo caminho feliz, casos de borda e cenários de erro.
 
+## Preferências
+
+Leia e siga `../../shared/preferences.md` (caminho relativo à pasta desta skill). Esta skill usa `autonomy` e as preferências abaixo, em `skills.unit-test-generator` (ou em `repos.<repositório>.unit-test-generator`, que têm prioridade):
+
+| Preferência | Valores                                 | Padrão    | O que controla                                                                                                                                  |
+| ----------- | --------------------------------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `output`    | `write`, `chat`                         | `write`   | Escrever o arquivo de teste no repositório, seguindo a convenção do projeto, ou só mostrar o código no chat                                      |
+| `runTests`  | `true`, `false`                         | `true`    | Rodar os testes gerados depois de escrevê-los                                                                                                   |
+| `naming`    | `project`, `deve_quando`, `should_when` | `project` | Seguir o padrão de nomes dos testes que já existem no projeto, ou usar `deve_[resultado]_quando_[condição]` ou `should_[result]_when_[condition]` |
+| `framework` | nome do framework (por repositório)     | detectado | Framework de testes do repositório                                                                                                              |
+| `testDir`   | padrão de pasta (por repositório)       | detectado | Onde ficam os testes do repositório                                                                                                             |
+
+Perguntas da configuração inicial (junto com a de autonomia, se faltar):
+
+- **Saída** (header `Saída`): `Escrever os arquivos de teste` (Recommended), `Só mostrar no chat`.
+- **Rodar testes** (header `Rodar`): `Rodar depois de escrever` (Recommended), `Não rodar`.
+- **Nomes** (header `Nomes`): `Seguir o padrão do projeto` (Recommended), `deve_..._quando_...`, `should_..._when_...`.
+
+`framework` e `testDir` não são perguntados: detecte-os no repositório (dependências, arquivos de configuração e testes existentes) e grave em `repos.<repositório>.unit-test-generator` para não detectar de novo. Se não houver testes nem framework no repositório, recomende o framework mais comum da linguagem; no modo `assistido`, confirme antes de instalar qualquer dependência, e no modo `autonomo` não instale: escreva os testes, informe o comando para instalar e não rode.
+
+Flags (têm prioridade sobre as preferências, só nesta chamada): `--reconfigurar` refaz as perguntas de preferências; `--preferencias` mostra as preferências em uso e não executa a tarefa.
+
+### Escrever e rodar
+
+- Com `output` igual a `write`: no modo `assistido`, mostre onde o arquivo será criado e confirme antes de escrever; no modo `autonomo`, escreva direto. Nunca sobrescreva um arquivo de teste existente: acrescente os testes novos a ele ou crie outro arquivo, e informe.
+- Com `runTests` ativo: rode só os testes gerados. Se algum falhar por erro no próprio teste, corrija o teste. Se falhar porque o código testado tem um bug, **não altere o código testado**: mantenha o teste, marque-o como falhando e explique o bug encontrado no relatório final.
+- Ao final, informe os arquivos criados ou alterados, o resultado dos testes e, na primeira execução, onde as preferências foram salvas e como mudá-las.
+
 ## Como gerar os testes
 
 - Cubra o caminho feliz (happy path)
 - Cubra casos de borda (valores nulos, vazios, extremos)
 - Cubra cenários de erro e exceções esperadas
-- Use nomes descritivos no padrão: `deve_[resultado]_quando_[condição]`
+- Use nomes descritivos conforme a preferência `naming` (por padrão, o padrão dos testes que já existem no projeto; sem testes existentes, `deve_[resultado]_quando_[condição]`)
 - Adicione um comentário de uma linha explicando cada grupo de testes
 - Não use mocks a menos que sejam estritamente necessários para isolar dependências externas
 
-Retorne apenas o código dos testes, sem explicações adicionais.
+Com `output` igual a `chat`, retorne apenas o código dos testes, sem explicações adicionais. Com `write`, escreva o arquivo e entregue o relatório curto descrito em "Escrever e rodar".
 
 ## Variáveis
 

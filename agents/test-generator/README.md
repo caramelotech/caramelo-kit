@@ -1,7 +1,7 @@
 # Agent: Test Generator
 
 **Tipo:** autônomo  
-**Skills utilizadas:** `skills/testing/skills/unit-test-generator/SKILL.md`
+**Skills utilizadas:** `skills/development/skills/unit-test-generator/SKILL.md`
 
 ## Objetivo
 

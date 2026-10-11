@@ -1,7 +1,7 @@
 # Agent: Code Reviewer
 
 **Tipo:** assistido  
-**Skills utilizadas:** `skills/development/skills/code-review/SKILL.md`, `skills/security/skills/owasp-check/SKILL.md`
+**Skills utilizadas:** `skills/development/skills/code-review/SKILL.md`, `skills/development/skills/owasp-check/SKILL.md`
 
 ## Objetivo
 

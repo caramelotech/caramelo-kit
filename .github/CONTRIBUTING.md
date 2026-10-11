@@ -17,9 +17,9 @@ skills/<categoria>/
         └── SKILL.md
 ```
 
-- Cada pasta em `skills/` (`development`, `writing`, `testing`, `devops`, `security`, `design`, `study`, `career`) é uma **categoria**: um plugin independente do Claude Code, com sua própria versão.
+- Cada pasta em `skills/` (`development`, `writing`, `devops`, `design`, `study`, `career`) é uma **categoria**: um plugin independente do Claude Code, com sua própria versão.
 - A subpasta `skills/` dentro de cada categoria é a convenção de escaneamento padrão do Claude Code - não renomeie nem mova para outro nível.
-- `agents/<nome>/README.md` orquestra múltiplas skills (ex: `code-reviewer` combina `development:code-review` e `security:owasp-check`).
+- `agents/<nome>/README.md` orquestra múltiplas skills (ex: `code-reviewer` combina `development:code-review` e `development:owasp-check`).
 - `plugins/<nome>/README.md` documenta integrações com ferramentas externas (VS Code, MCP) - não confundir com os plugins do Claude Code em `skills/`.
 - `templates/` tem o ponto de partida para cada um desses três tipos de item.
 
