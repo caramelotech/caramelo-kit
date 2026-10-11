@@ -1,11 +1,39 @@
 ---
 name: code-review
-description: Revisa código em busca de bugs, vulnerabilidades de segurança, problemas de performance e manutenibilidade. Use quando for solicitado revisar, analisar ou dar feedback sobre código.
+description: Revisa código em busca de bugs, vulnerabilidades de segurança, problemas de performance e manutenibilidade. Lembra as preferências da pessoa entre sessões (onde entregar a revisão, severidade mínima, se deve só sugerir, perguntar ou aplicar as correções, e se inclui a checagem OWASP), para trabalhar de forma autônoma quando ela quiser. Use quando for solicitado revisar, analisar ou dar feedback sobre código.
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Skill, AskUserQuestion
 ---
 
 # Code Review
 
 Revise o código fornecido com foco em corretude, segurança, legibilidade e manutenibilidade, seguindo boas práticas da linguagem utilizada.
+
+## 0. Preferências
+
+Leia e siga `../../shared/preferences.md` (caminho relativo à pasta desta skill). Esta skill usa `autonomy` e as preferências abaixo, em `skills.code-review` (ou em `repos.<repositório>.code-review`, que têm prioridade):
+
+| Preferência   | Valores                             | Padrão     | O que controla                                                                                                                          |
+| ------------- | ----------------------------------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `output`      | `chat`, `file`                      | `chat`     | Entregar a revisão no chat ou num arquivo `code-review-<YYYY-MM-DD>.md` (na pasta `outputPath`, se definida, ou na raiz do repositório) |
+| `minSeverity` | `sugestao`, `importante`, `critico` | `sugestao` | Severidade mínima dos itens listados                                                                                                    |
+| `fixes`       | `suggest`, `ask`, `apply`           | `suggest`  | Só sugerir correções, perguntar antes de aplicá-las, ou aplicar automaticamente as `crítico` e `importante`                              |
+| `withOwasp`   | `true`, `false`                     | `false`    | Rodar também a skill `owasp-check` e juntar os achados na seção de segurança                                                            |
+
+Perguntas da configuração inicial (junto com a de autonomia, se faltar):
+
+- **Correções** (header `Correções`): `Só sugerir` (Recommended), `Perguntar antes de aplicar`, `Aplicar automaticamente`.
+- **Saída** (header `Saída`): `No chat` (Recommended), `Em arquivo`.
+- **Severidade** (header `Severidade`): `Tudo, inclusive sugestões` (Recommended), `Só importante e crítico`, `Só crítico`.
+
+`withOwasp` começa em `false` e muda por reconfiguração ou pedido ("sempre inclua a checagem de segurança").
+
+Flags (têm prioridade sobre as preferências, só nesta chamada): `--reconfigurar` refaz as perguntas de preferências; `--preferencias` mostra as preferências em uso e não executa a tarefa.
+
+### Aplicar correções
+
+- **`suggest`**: só liste as correções.
+- **`ask`**: no modo `assistido`, ao final pergunte quais correções aplicar. No modo `autonomo` ou sem ninguém para responder, use o padrão seguro (só sugerir) e informe.
+- **`apply`**: aplique as correções `crítico` e `importante` com a menor mudança possível, sem refatorar além do necessário. Sugestões de estilo nunca são aplicadas automaticamente. Depois, rode os testes e o lint do projeto, se existirem, e informe o resultado. Se uma correção depender de decisão de negócio ou de contexto ausente, não aplique: deixe como sugestão e explique.
 
 ## Princípios de execução
 
@@ -93,4 +121,5 @@ def save_user(name, email, db):
 
 - Para diffs grandes, revise por arquivo ou por função
 - Informe o contexto do PR para revisões mais precisas
-- Combine com a skill `owasp-check` para revisões focadas em segurança
+- Combine com a skill `owasp-check` para revisões focadas em segurança, ou ative `withOwasp` para rodá-la sempre
+- Ao final, informe o que foi aplicado (se houve), onde a revisão foi salva (se em arquivo) e, na primeira execução, onde as preferências foram salvas e como mudá-las
