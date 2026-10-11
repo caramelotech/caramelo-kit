@@ -85,8 +85,8 @@ Copie `templates/plugin.md` para `plugins/<nome>/README.md`, declarando platafor
 Antes de abrir o PR, registre o repositório local como marketplace e instale a categoria alterada:
 
 ```
-/plugin marketplace add /caminho/para/caramelo-kit
-/plugin install <categoria>@caramelo-kit
+/plugin marketplace add /caminho/para/caramelo-skills
+/plugin install <categoria>@caramelo-skills
 ```
 
 Rode alguns prompts reais (as frases que motivaram a skill) e confira se ela é acionada e produz o resultado esperado.

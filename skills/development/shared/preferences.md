@@ -41,7 +41,7 @@ As preferências são a memória das skills de desenvolvimento entre sessões. �
     }
   },
   "repos": {
-    "github.com/caramelotech/caramelo-kit": {
+    "github.com/caramelotech/caramelo-skills": {
       "commit-message": { "protectedBranchPolicy": "allow" },
       "unit-test-generator": { "framework": "vitest", "testDir": "src/**/__tests__" }
     }
@@ -78,7 +78,7 @@ Quando uma decisão não estiver coberta por preferência e não houver como per
 
 ### Preferências por repositório (`repos`)
 
-Algumas preferências mudam de um repositório para outro (por exemplo, permitir commit direto na `main` só em repositórios pessoais). A chave do repositório é a URL do remoto `origin` sem protocolo, usuário e `.git` (ex: `github.com/caramelotech/caramelo-kit`), ou o caminho absoluto da raiz do repositório quando não houver remoto.
+Algumas preferências mudam de um repositório para outro (por exemplo, permitir commit direto na `main` só em repositórios pessoais). A chave do repositório é a URL do remoto `origin` sem protocolo, usuário e `.git` (ex: `github.com/caramelotech/caramelo-skills`), ou o caminho absoluto da raiz do repositório quando não houver remoto.
 
 Ordem de precedência, da mais forte para a mais fraca: flag da chamada, preferência do repositório, preferência da skill, `autonomy` global, padrão seguro.
 

@@ -1,8 +1,8 @@
 {
-  "name": "caramelo-kit",
+  "name": "caramelo-skills",
   "owner": {
     "name": "Caramelo Tech",
-    "url": "https://github.com/caramelotech/caramelo-kit"
+    "url": "https://github.com/caramelotech/caramelo-skills"
   },
   "description": "Skills reutilizáveis para desenvolvimento de software, organizadas por categoria: desenvolvimento, escrita, devops, design, estudos e carreira",
   "version": "2.0.0",

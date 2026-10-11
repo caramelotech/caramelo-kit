@@ -1,4 +1,4 @@
-# Caramelo Kit 🐶
+# Caramelo Skills 🐶
 
 Repositório de skills, agents e plugins para desenvolvimento de software. As skills são organizadas em **categorias** e distribuídas como plugins instaláveis via marketplace do Claude Code.
 
@@ -24,34 +24,34 @@ O repositório tem quatro áreas principais: `skills/` (skills agrupadas por cat
 1. Registre este repositório como marketplace. De dentro de uma sessão do Claude Code:
 
    ```
-   /plugin marketplace add caramelotech/caramelo-kit
+   /plugin marketplace add caramelotech/caramelo-skills
    ```
 
    Ou direto do terminal, com a CLI:
 
    ```bash
-   claude plugin marketplace add caramelotech/caramelo-kit
+   claude plugin marketplace add caramelotech/caramelo-skills
    ```
 
    Outras formas de apontar para o mesmo repositório, com qualquer um dos dois comandos acima:
 
    ```
    # via SSH
-   git@github.com:caramelotech/caramelo-kit.git
+   git@github.com:caramelotech/caramelo-skills.git
 
    # caminho local
-   /caminho/para/caramelo-kit
+   /caminho/para/caramelo-skills
    ```
 
 2. Instale a categoria que você precisa:
 
    ```
-   /plugin install development@caramelo-kit
-   /plugin install writing@caramelo-kit
-   /plugin install devops@caramelo-kit
-   /plugin install design@caramelo-kit
-   /plugin install study@caramelo-kit
-   /plugin install career@caramelo-kit
+   /plugin install development@caramelo-skills
+   /plugin install writing@caramelo-skills
+   /plugin install devops@caramelo-skills
+   /plugin install design@caramelo-skills
+   /plugin install study@caramelo-skills
+   /plugin install career@caramelo-skills
    ```
 
    As skills de uma categoria ficam disponíveis com o prefixo dela, por exemplo `/development:code-review`.

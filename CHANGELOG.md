@@ -6,6 +6,12 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e o 
 
 Cada categoria em `skills/` tem sua própria versão, declarada em `.claude-plugin/plugin.json`. A versão listada aqui no topo é a do marketplace (`.claude-plugin/marketplace.json`) como um todo. Como o repositório ainda não teve nenhuma versão publicada, todo o trabalho até aqui faz parte do primeiro lançamento (1.0.0) - a partir do próximo commit e push, mudanças estruturais passam a exigir um novo bump de versão.
 
+## [Não lançado]
+
+### Alterado
+
+- Repositório e marketplace renomeados de `caramelo-kit` para `caramelo-skills`. Quem já tinha o marketplace instalado deve removê-lo (`/plugin marketplace remove caramelo-kit`), adicioná-lo de novo (`/plugin marketplace add caramelotech/caramelo-skills`) e reinstalar as categorias como `<categoria>@caramelo-skills`.
+
 ## [2.0.0] - 2026-10-10
 
 ### Adicionado

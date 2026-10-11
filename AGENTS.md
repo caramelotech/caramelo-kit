@@ -12,7 +12,7 @@ Coleção de **skills**, **agents** e **plugins** reutilizáveis para desenvolvi
 - `agents/` - Orquestradores que combinam múltiplas skills. Cada agente tem seu próprio `README.md` descrevendo fluxo de execução, inputs e outputs.
 - `plugins/` - Integrações com ferramentas externas (`vscode/`, `mcp/`), não confundir com os plugins do Claude Code em `skills/`. Cada integração tem seu próprio `README.md` com instruções de instalação.
 - `templates/` - Templates base para criar novos itens (`skill.md`, `agent.md`, `plugin.md`).
-- `.claude-plugin/marketplace.json` - Registro das categorias como plugins instaláveis no Claude Code (`/plugin marketplace add` + `/plugin install <categoria>@caramelo-kit`).
+- `.claude-plugin/marketplace.json` - Registro das categorias como plugins instaláveis no Claude Code (`/plugin marketplace add` + `/plugin install <categoria>@caramelo-skills`).
 - `CHANGELOG.md` - Histórico de versões do marketplace e das categorias, no formato Keep a Changelog.
 - `.github/CONTRIBUTING.md` - Guia de contribuição (como adicionar skill, categoria, agent ou integração externa).
 
