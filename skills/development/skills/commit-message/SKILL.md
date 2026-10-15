@@ -1,7 +1,7 @@
 ---
 name: commit-message
 description: Avalia alterações no working tree, decide se podem ser particionadas em commits menores e executa os commits seguindo Conventional Commits, sem co-autores e sem referências a qualquer agent. Lembra as preferências da pessoa entre sessões (commitar ou não em branch protegida como a main, commitar sem confirmar o plano, fazer push, assinar com Signed-off-by, idioma da mensagem), inclusive por repositório, para trabalhar de forma autônoma quando ela quiser. Parâmetros opcionais: nome da nova branch, --sign, --no-sign, --push, --no-push, --reconfigurar e --preferencias. Ex: /commit-message feat/branch --sign
-allowed-tools: Bash, Read, Write, Edit, Glob, Grep, AskUserQuestion
+allowed-tools: Bash(git status:*), Bash(git diff:*), Bash(git branch --show-current), Bash(git checkout -b:*), Bash(git config --get:*), Bash(git add:*), Bash(git commit:*), Bash(git push origin:*), Bash(git push -u origin:*), Bash(git log:*), Read, Write, Edit, Glob, Grep, AskUserQuestion
 ---
 
 # Commit Workflow
@@ -58,51 +58,65 @@ Exemplos:
 - `/commit-message --sign --push` - assina e faz push nesta chamada
 - `/commit-message --preferencias` - só mostra as preferências
 
-Se for criar branch:
+Se um nome de branch foi passado como argumento, crie-a agora:
 
 ```bash
 git checkout -b <nome-da-branch>
 ```
 
-### Branch protegida
-
-Se nenhuma branch for passada e a branch atual (`git branch --show-current`) estiver em `protectedBranches`, siga `protectedBranchPolicy`:
-
-- **`allow`**: commite direto na branch atual.
-- **`new-branch`**: crie uma branch `<tipo>/<descrição-curta>` (prefixo de acordo com a natureza predominante das alterações levantadas na etapa 2) e commite nela, sem perguntar. Informe o nome no relatório final.
-- **`ask`**: no modo `assistido`, avise e pergunte se deseja commitar direto ou criar a branch sugerida; a decisão é da pessoa. No modo `autonomo` ou sem ninguém para responder, use o padrão seguro: crie a branch sugerida e informe no relatório final.
+Se nenhum nome foi passado, a decisão de branch (protegida ou não) só é tomada depois do levantamento, na etapa 3.
 
 Para obter nome e e-mail do git (usado no `Signed-off-by`):
 
 ```bash
-git config user.name
-git config user.email
+git config --get user.name
+git config --get user.email
 ```
 
 Se o `Signed-off-by` estiver ativo e o repositório exigir assinatura criptográfica (`commit.gpgsign=true`) sem chave configurada, o commit falhará. Informe isso antes de prosseguir - `--signoff` sozinho funciona sem GPG, porque só adiciona a linha `Signed-off-by`.
 
 ## 2. Levantamento das alterações
 
-Execute em sequência:
+Primeiro, levante os arquivos afetados sem expor conteúdo nenhum:
 
 ```bash
-git status
-git diff HEAD
-git diff --cached
+git status --short
+git diff HEAD --stat
+git diff --cached --stat
 ```
 
-Leia a saída completa. Identifique:
+**Antes de ler qualquer conteúdo**, exclua pelo nome os arquivos que correspondam a estes padrões, sem abri-los em nenhuma hipótese: `.env*`, `*.pem`, `*.key`, `*.pfx`, `id_rsa*`, `*credentials*`, `*secret*`, `*.tfstate`, `*.tfvars`. Isso vale tanto para não rastreados quanto para arquivos já versionados que casem com esses padrões (ex: um `.env.development` commitado por engano). Eles nunca entram em nenhum commit planejado, em nenhum modo - aparecem no relatório final só como "fora dos commits", com sugestão de adicioná-los ao `.gitignore`. No modo `autonomo`, siga com os demais arquivos e destaque o aviso no relatório final.
+
+Só então leia o conteúdo dos arquivos restantes, excluindo os padrões acima por pathspec:
+
+```bash
+git diff HEAD -- . ":(exclude).env*" ":(exclude)*.pem" ":(exclude)*.key" ":(exclude)*.pfx" ":(exclude)id_rsa*" ":(exclude)*credentials*" ":(exclude)*secret*" ":(exclude)*.tfstate" ":(exclude)*.tfvars"
+git diff --cached -- . ":(exclude).env*" ":(exclude)*.pem" ":(exclude)*.key" ":(exclude)*.pfx" ":(exclude)id_rsa*" ":(exclude)*credentials*" ":(exclude)*secret*" ":(exclude)*.tfstate" ":(exclude)*.tfvars"
+```
+
+Identifique:
 
 - Arquivos modificados, adicionados e removidos
 - A natureza de cada mudança (funcionalidade, correção, estilo, configuração, teste, documentação, refactor)
 - Agrupamentos lógicos independentes entre si
 
-**Antes de montar o plano de commits**, verifique se há arquivos que não deveriam ser commitados (ex: `.env`, credenciais, chaves, arquivos de build/dependências não versionados). Se encontrar algum:
+Essa análise também serve para decidir o tipo de branch na etapa 3, quando aplicável.
 
-- Não o inclua em nenhum commit planejado, em nenhum modo.
-- Avise e sugira adicioná-lo ao `.gitignore`. No modo `autonomo`, siga com os demais arquivos e destaque o aviso no relatório final.
+## 3. Decisão de branch
 
-## 3. Decisão de particionamento
+Se um nome de branch já foi passado como argumento (etapa 1), pule esta etapa - a branch já foi criada.
+
+Caso contrário, verifique a branch atual (`git branch --show-current`). Se ela estiver em `protectedBranches`, decida com base na natureza das alterações identificada na etapa 2 e siga `protectedBranchPolicy`:
+
+- **`allow`**: commite direto na branch atual.
+- **`new-branch`**: crie uma branch `<tipo>/<descrição-curta>` (prefixo de acordo com a natureza predominante das alterações) e commite nela, sem perguntar. Informe o nome no relatório final.
+- **`ask`**: no modo `assistido`, avise e pergunte se deseja commitar direto ou criar a branch sugerida; a decisão é da pessoa. No modo `autonomo` ou sem ninguém para responder, use o padrão seguro: crie a branch sugerida e informe no relatório final.
+
+```bash
+git checkout -b <tipo>/<descrição-curta>
+```
+
+## 4. Decisão de particionamento
 
 Avalie se as mudanças formam **um único contexto coeso** ou **contextos independentes** que merecem commits separados.
 
@@ -138,7 +152,7 @@ Resolva `confirmPlan`: `inherit` vira `always` no modo `assistido` e `never` no 
 - **`always`**: apresente o plano e aguarde a confirmação ("ok", "sim", "pode ir", "s" ou variantes). Se a pessoa ajustar o plano, incorpore e confirme antes de executar.
 - **`never`**: apresente o plano e execute em seguida, sem esperar resposta.
 
-## 4. Formato Conventional Commits
+## 5. Formato Conventional Commits
 
 ```
 <type>(<scope>): <descrição no imperativo, minúsculo>
@@ -181,7 +195,7 @@ chore(deps): update next version
 refactor(api): extract validation logic into helper
 ```
 
-## 5. Execução dos commits
+## 6. Execução dos commits
 
 Para cada commit planejado, adicione apenas os arquivos do escopo e commite:
 
@@ -199,7 +213,7 @@ git add <arquivo1> <arquivo2> ...
 git commit --signoff -m "<mensagem conventional commit>"
 ```
 
-O `--signoff` acrescenta automaticamente `Signed-off-by: Nome <email>` no rodapé usando os dados de `git config user.name` e `git config user.email`.
+O `--signoff` acrescenta automaticamente `Signed-off-by: Nome <email>` no rodapé usando os dados obtidos na etapa 1 (`git config --get user.name` e `git config --get user.email`).
 
 Nunca inclua na mensagem:
 
@@ -209,7 +223,7 @@ Nunca inclua na mensagem:
 
 Se um commit falhar (hook, assinatura, conflito), pare a sequência, não tente contornar o hook e informe o erro com a saída do comando.
 
-## 6. Push
+## 7. Push
 
 Resolva o push pela flag (`--push` / `--no-push`) ou pela preferência `push`:
 
@@ -217,7 +231,7 @@ Resolva o push pela flag (`--push` / `--no-push`) ou pela preferência `push`:
 - **`ask`**: pergunte se deve fazer push. No modo `autonomo` ou sem ninguém para responder, não faça e informe.
 - **`auto`**: faça `git push` (com `-u origin <branch>` se a branch ainda não tiver upstream). Se o push for rejeitado (por exemplo, a branch remota avançou), não force: informe o erro e sugira `git pull --rebase` antes de tentar de novo.
 
-## 7. Relatório final
+## 8. Relatório final
 
 Após os commits, execute:
 
